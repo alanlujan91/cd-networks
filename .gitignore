@@ -1,3 +1,7 @@
+*.pyc
+cb_2013*
+county*
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
