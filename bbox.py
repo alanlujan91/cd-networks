@@ -22,8 +22,8 @@ class Bbox(object):
     def isin(self, b):
         
         def p_in(x,y):
-            x_in = (b.x1 < x < b.x2) or (b.x1 > x > b.x2)
-            y_in = (b.y1 < y < b.y2) or (b.y1 > y > b.y2)
+            x_in = (b.x1 <= x <= b.x2) or (b.x1 >= x >= b.x2)
+            y_in = (b.y1 <= y <= b.y2) or (b.y1 >= y >= b.y2)
             return x_in and y_in
         
         return p_in(self.x1, self.y1) or p_in(self.x2, self.y2) or p_in(self.x1, self.y2) or p_in(self.x2, self.y1)
