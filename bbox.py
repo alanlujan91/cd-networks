@@ -27,3 +27,10 @@ class Bbox(object):
             return x_in and y_in
         
         return p_in(self.x1, self.y1) or p_in(self.x2, self.y2) or p_in(self.x1, self.y2) or p_in(self.x2, self.y1)
+        
+    def rounded_bbox(self, digits):
+        x1 = round(self.x1, digits)
+        x2 = round(self.x2, digits)
+        y1 = round(self.y1, digits)
+        y2 = round(self.y2, digits)
+        return Bbox([x1,y1,x2,y2])
