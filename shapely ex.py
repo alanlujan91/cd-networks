@@ -18,9 +18,10 @@ for county in counties:
     g.add_node(county['properties']['GEOID'])
     
 shapes = {county['properties']['GEOID'] : geom.shape(county['geometry']) for county in counties}
+states = {county['properties']['GEOID'] : county['properties']['STATEFP'] for county in counties}
 
 for u, v in combinations(g.nodes(), 2):
-    if shapes[u].touches(shapes[v]):
+    if states[u] == states[v] and shapes[u].touches(shapes[v]):
         g.add_edge(u, v)
         
 g.pos = {key : shapes[key].centroid.coords[0] for key in shapes.keys()}
