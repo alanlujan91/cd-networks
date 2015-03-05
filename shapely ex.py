@@ -20,7 +20,6 @@ for county in counties:
 shapes = {county['properties']['GEOID'] : geom.shape(county['geometry']) for county in counties}
 
 for u, v in combinations(g.nodes(), 2):
-    print u, v
     if shapes[u].touches(shapes[v]):
         g.add_edge(u, v)
         
